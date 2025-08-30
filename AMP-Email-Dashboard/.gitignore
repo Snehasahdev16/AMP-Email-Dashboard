@@ -30,6 +30,6 @@ build/
 !**/src/test/**/build/
 
 ### VS Code ###
-.vscode/
+.idea/AMP-Email-Dashboard/
 src/main/resources/application.properties
 src/main/resources/application.yml
