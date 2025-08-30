@@ -5,7 +5,7 @@ An intelligent full-stack platform that helps users generate, test, and send AMP
 This project provides a dashboard where users can enter an idea or paste HTML code, and the system will generate valid AMP4Email code. Users can also test their emails, trigger backend APIs, and view real-time analytics when emails are opened.
 
 
-##🌟 Features
+## 🌟 Features
 
 🔹⚡ AI-Powered AMP HTML Generator – Convert plain HTML or natural language ideas into valid AMP Email code.
 
@@ -18,7 +18,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 🔹📊 Analytics – Track email opens & fetch API data dynamically.
 
 
-##🛠 Tech Stack
+## 🛠 Tech Stack
 
 **Frontend (Vite + React + CSS)**
 
@@ -45,31 +45,42 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 🔹LLM-based AMP Email generator
 
 
-##📂 Project Structure
+## 📂 Project Structure
 
  AMP-Builder-AI/
+ 
 ├── backend/
+
 │ ├── src/main/java/
+
 │ ├── src/main/resources/
+
 │ └── pom.xml
+
 ├── frontend/
+
 │ ├── src/
+
 │ ├── index.html
+
 │ └── package.json
+
 ├── .gitignore
+
 ├── README.md
+
 └── application.properties.example # Template config file
 
 
-##🚀 Getting Started
+## 🚀 Getting Started
 
-1️⃣ Clone the repository
+1️⃣ **Clone the repository**
 
 🔹git clone https://github.com/Snehasahdev16/AMP-Builder-AI.git
 
 🔹cd AMP-Builder-AI
 
-2️⃣ Setup Backend (Spring Boot)
+2️⃣ **Setup Backend (Spring Boot)**
 
 🔹cd backend
 
@@ -83,7 +94,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 
 #Backend runs on 👉 http://localhost:8080
 
-3️⃣ Setup Frontend (Vite + React)
+3️⃣ **Setup Frontend (Vite + React)**
 
 🔹cd frontend
 
@@ -94,7 +105,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 #Frontend runs on 👉 http://localhost:5173 (default Vite port)
 
 
-##🔑 Configuration
+## 🔑 Configuration
 
 #Copy application.properties.example → application.properties and set:
 
@@ -117,7 +128,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 🔹logging.level.org.springframework.mail.javamail=DEBUG
 
 
-##🔑 Notes:
+## 🔑 Notes:
 
 🔹Replace your_email@gmail.com and your_app_password with your own.
 
@@ -130,7 +141,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 🔹Commit only the .example file.
 
 
-##💡 Use Cases
+## 💡 Use Cases
 
 🔹Capture Info – User enters an idea/code → AI generates AMP HTML.
 
@@ -139,7 +150,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 🔹Email Open Tracking – Backend fetches API data dynamically → shows insights in HTML.
 
 
-##📸 Screenshots (to be added)
+## 📸 Screenshots (to be added)
 
 🔹Dashboard with input box & generated AMP HTML
 
@@ -148,7 +159,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 🔹Email testing flow
 
 
-##🤝 Contributing
+## 🤝 Contributing
 
 🔹Fork the repo
 
