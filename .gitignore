@@ -28,8 +28,8 @@ logs/
 *.war
 *.ear
 # Spring Boot config (keep secrets safe)
-src/main/resources/application.properties
-src/main/resources/application.yml
+.idea/AMP-Email-Dashboard/src/main/resources/application.properties
+.idea/AMP-Email-Dashboard/src/main/resources/application.yml
 # Node / React (frontend)
 node_modules/
 /build/
