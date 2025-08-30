@@ -4,159 +4,158 @@ An intelligent full-stack platform that helps users generate, test, and send AMP
 
 This project provides a dashboard where users can enter an idea or paste HTML code, and the system will generate valid AMP4Email code. Users can also test their emails, trigger backend APIs, and view real-time analytics when emails are opened.
 
-🌟 Features
 
-⚡ AI-Powered AMP HTML Generator – Convert plain HTML or natural language ideas into valid AMP Email code.
+##🌟 Features
 
-📝 Dashboard (React + Vite) – Clean and fast UI with live code editing & AMP preview.
+🔹⚡ AI-Powered AMP HTML Generator – Convert plain HTML or natural language ideas into valid AMP Email code.
 
-📧 Email Testing – Trigger test emails directly from the dashboard.
+🔹📝 Dashboard (React + Vite) – Clean and fast UI with live code editing & AMP preview.
 
-🔄 Update Workflow – User inputs → modified code → API/Kafka pipeline.
+🔹📧 Email Testing – Trigger test emails directly from the dashboard.
 
-📊 Analytics – Track email opens & fetch API data dynamically.
+🔹🔄 Update Workflow – User inputs → modified code → API/Kafka pipeline.
 
-🛠 Tech Stack
+🔹📊 Analytics – Track email opens & fetch API data dynamically.
 
-Frontend (Vite + React + CSS)
 
-React (UI, Code Editor, AMP Preview)
+##🛠 Tech Stack
 
-Vite (fast build tool)
+**Frontend (Vite + React + CSS)**
 
-Plain CSS (for styling)
+🔹React (UI, Code Editor, AMP Preview)
 
-Axios (API calls)
+🔹Vite (fast build tool)
 
-Backend (Java + Spring Boot)
+🔹Plain CSS (for styling)
 
-Spring Boot (REST APIs, Email sending, Kafka integration)
+🔹Axios (API calls)
 
-Java (business logic)
+**Backend (Java + Spring Boot)**
 
-Kafka (asynchronous updates & event-driven flow)
+🔹Spring Boot (REST APIs, Email sending, Kafka integration)
 
-MySQL (store inputs, logs, history)
+🔹Java (business logic)
 
-AI Integration
+🔹Kafka (asynchronous updates & event-driven flow)
 
-LLM-based AMP Email generator
+🔹MySQL (store inputs, logs, history)
 
-📂 Project Structure
+**AI Integration**
+
+🔹LLM-based AMP Email generator
+
+
+##📂 Project Structure
 
  AMP-Builder-AI/
-│
-├── backend/            
-│   ├── src/main/java/
-│   ├── src/main/resources/
-│   └── pom.xml
-│
-├── frontend/           
-│   ├── src/
-│   ├── index.html
-│   └── package.json
-│
-├── .gitignore          
-├── README.md           
-└── application.properties.example   # Template config file
+├── backend/
+│ ├── src/main/java/
+│ ├── src/main/resources/
+│ └── pom.xml
+├── frontend/
+│ ├── src/
+│ ├── index.html
+│ └── package.json
+├── .gitignore
+├── README.md
+└── application.properties.example # Template config file
 
-🚀 Getting Started
 
+##🚀 Getting Started
 
 1️⃣ Clone the repository
 
-git clone https://github.com/Snehasahdev16/AMP-Builder-AI.git
+🔹git clone https://github.com/Snehasahdev16/AMP-Builder-AI.git
 
-cd AMP-Builder-AI
-
+🔹cd AMP-Builder-AI
 
 2️⃣ Setup Backend (Spring Boot)
 
-cd backend
+🔹cd backend
 
-//Import project in IntelliJ IDEA or any Java IDE
+#Import project in IntelliJ IDEA or any Java IDE
 
-//Copy application.properties.example → application.properties
+#Copy application.properties.example → application.properties
 
-mvn clean install
+🔹mvn clean install
 
-mvn spring-boot:run
+🔹mvn spring-boot:run
 
-Backend runs on 👉 http://localhost:8080
-
+#Backend runs on 👉 http://localhost:8080
 
 3️⃣ Setup Frontend (Vite + React)
 
-cd frontend
+🔹cd frontend
 
-npm install
+🔹npm install
 
-npm run dev
+🔹npm run dev
 
-Frontend runs on 👉 http://localhost:5173 (default Vite port)
-
-
-🔑 Configuration
-
-Copy application.properties.example → application.properties and set:
-
-spring.application.name=AMP-Email-Dashboard
-
-spring.mail.host=smtp.gmail.com
-
-spring.mail.port=587
-
-spring.mail.username=your_email@gmail.com
-
-spring.mail.password=your_app_password   //Use App Password, not real Gmail password
-
-spring.mail.properties.mail.smtp.auth=true
-
-spring.mail.properties.mail.smtp.starttls.enable=true
-
-logging.level.org.springframework.mail=DEBUG
-
-logging.level.org.springframework.mail.javamail=DEBUG
+#Frontend runs on 👉 http://localhost:5173 (default Vite port)
 
 
-🔑 Notes:
-Replace your_email@gmail.com and your_app_password with your own.
+##🔑 Configuration
 
-For Gmail, always generate a Google App Password instead of using your actual Gmail password.
+#Copy application.properties.example → application.properties and set:
 
-Regular Gmail password won’t work due to Google’s “Less Secure Apps” policy.
+🔹spring.application.name=AMP-Email-Dashboard
 
-Keep real config in application.properties (ignored in Git).
+🔹spring.mail.host=smtp.gmail.com
 
-Commit only the .example file.
+🔹spring.mail.port=587
 
+🔹spring.mail.username=your_email@gmail.com
 
-💡 Use Cases
+🔹spring.mail.password=your_app_password   #Use App Password, not real Gmail password
 
-Capture Info – User enters an idea/code → AI generates AMP HTML.
+🔹spring.mail.properties.mail.smtp.auth=true
 
-Update Flow – User modifies AMP code → backend updates via API/Kafka.
+🔹spring.mail.properties.mail.smtp.starttls.enable=true
 
-Email Open Tracking – Backend fetches API data dynamically → shows insights in HTML.
+🔹logging.level.org.springframework.mail=DEBUG
 
-
-📸 Screenshots (to be added)
-
-Dashboard with input box & generated AMP HTML
-
-Code editor & preview
-
-Email testing flow
+🔹logging.level.org.springframework.mail.javamail=DEBUG
 
 
-🤝 Contributing
+##🔑 Notes:
 
-Fork the repo
+🔹Replace your_email@gmail.com and your_app_password with your own.
 
-Create a feature branch (git checkout -b feature-name)
+🔹For Gmail, always generate a Google App Password instead of using your actual Gmail password.
 
-Commit changes (git commit -m "Add feature")
+🔹Regular Gmail password won’t work due to Google’s “Less Secure Apps” policy.
 
-Push to branch (git push origin feature-name)
+🔹Keep real config in application.properties (ignored in Git).
 
-Open a Pull Request
+🔹Commit only the .example file.
+
+
+##💡 Use Cases
+
+🔹Capture Info – User enters an idea/code → AI generates AMP HTML.
+
+🔹Update Flow – User modifies AMP code → backend updates via API/Kafka.
+
+🔹Email Open Tracking – Backend fetches API data dynamically → shows insights in HTML.
+
+
+##📸 Screenshots (to be added)
+
+🔹Dashboard with input box & generated AMP HTML
+
+🔹Code editor & preview
+
+🔹Email testing flow
+
+
+##🤝 Contributing
+
+🔹Fork the repo
+
+🔹Create a feature branch (git checkout -b feature-name)
+
+🔹Commit changes (git commit -m "Add feature")
+
+🔹Push to branch (git push origin feature-name)
+
+🔹Open a Pull Request
