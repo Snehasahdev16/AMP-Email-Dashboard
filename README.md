@@ -1,7 +1,7 @@
 
 # AMP Builder with AI 🚀
 
-An intelligent full-stack platform that helps users generate, test, and send AMP HTML Emails using AI.
+An intelligent full-stack platform that helps users generate and test AMP HTML Emails using AI.
 
 This project provides a dashboard where users can enter an idea or paste HTML code, and the system will generate valid AMP4Email code. Users can also test their emails, trigger backend APIs, and view real-time analytics when emails are opened.
 
@@ -43,7 +43,7 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 
 **AI Integration**
 
-🔹LLM-based AMP Email generator
+🔹Gemini 2.5 pro AMP Email generator
 
 
 ## 📂 Project Structure
@@ -112,34 +112,9 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 
 🔹spring.application.name=AMP-Email-Dashboard
 
-🔹spring.mail.host=smtp.gmail.com
+🔹 server.port=8080
 
-🔹spring.mail.port=587
-
-🔹spring.mail.username=your_email@gmail.com
-
-🔹spring.mail.password=your_app_password   #Use App Password, not real Gmail password
-
-🔹spring.mail.properties.mail.smtp.auth=true
-
-🔹spring.mail.properties.mail.smtp.starttls.enable=true
-
-🔹logging.level.org.springframework.mail=DEBUG
-
-🔹logging.level.org.springframework.mail.javamail=DEBUG
-
-
-## 🔑 Notes:
-
-🔹Replace your_email@gmail.com and your_app_password with your own.
-
-🔹For Gmail, always generate a Google App Password instead of using your actual Gmail password.
-
-🔹Regular Gmail password won’t work due to Google’s “Less Secure Apps” policy.
-
-🔹Keep real config in application.properties (ignored in Git).
-
-🔹Commit only the .example file.
+🔹 gemini.api.key=YOUR_KEY
 
 
 ## 💡 Use Cases
@@ -148,16 +123,12 @@ This project provides a dashboard where users can enter an idea or paste HTML co
 
 🔹Update Flow – User modifies AMP code → backend updates via API/Kafka.
 
-🔹Email Open Tracking – Backend fetches API data dynamically → shows insights in HTML.
-
 
 ## 📸 Screenshots (to be added)
 
 🔹Dashboard with input box & generated AMP HTML
 
 🔹Code editor & preview
-
-🔹Email testing flow
 
 
 ## 🤝 Contributing
