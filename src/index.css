@@ -1,22 +1,17 @@
-/* Global reset */
-* {
+/* Reset and full height */
+html, body, #root {
+  height: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
 }
 
-/* Body styling */
+/* Gradient background */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
-  line-height: 1.6;
-}
-
-/* Root container */
-#root {
   display: flex;
-  flex-direction: column;
+  display: flex;
   align-items: center;
-  min-height: 100vh;
+  justify-content: center;
+  background: linear-gradient(135deg, #dbeafe, #f3e8ff, #fce7f3);
+  background-size: cover;
 }
