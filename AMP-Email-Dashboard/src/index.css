@@ -1,0 +1,17 @@
+/* Reset and full height */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Gradient background */
+body {
+  display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #dbeafe, #f3e8ff, #fce7f3);
+  background-size: cover;
+}
