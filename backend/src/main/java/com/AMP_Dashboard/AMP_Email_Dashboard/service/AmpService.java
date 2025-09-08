@@ -194,6 +194,29 @@ public class AmpService {
         return callGemini(prompt);
     }
 
+    public String convertIdeaToForm(String idea) {
+        String prompt =
+                "You’re an expert in AMP for Email. Based on the following idea, generate a valid AMP4EMAIL email FORM.\n\n" +
+                        "Idea:\n" + idea + "\n\n" +
+                        "Requirements:\n" +
+                        "1. Must start with <!doctype html> and <html amp4email lang=\"en\" data-css-strict>.\n" +
+                        "2. Include required AMP runtime script and amp-form script:\n" +
+                        "   <script async src=\"https://cdn.ampproject.org/v0.js\"></script>\n" +
+                        "   <script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>\n" +
+                        "3. The <form> must have method=\"post\", action-xhr=\"https://example.com/submit\", and target=\"_top\".\n" +
+                        "4. Only allow valid AMP input types: text, email, textarea, select, option, input type=submit.\n" +
+                        "   Disallowed: input type=button, image, file.\n" +
+                        "5. Add proper <label> for each input and use required where appropriate.\n" +
+                        "6. Include success and error handling:\n" +
+                        "   <div submit-success><template type=\"amp-mustache\">Success message</template></div>\n" +
+                        "   <div submit-error><template type=\"amp-mustache\">Error message</template></div>\n" +
+                        "7. Keep CSS within <style amp-custom>, no !important, no animations.\n" +
+                        "8. Return ONLY the valid AMP4EMAIL HTML code, no explanations or markdown fences.\n";
+
+        return callGemini(prompt);
+    }
+
+
     private String escapeJson(String text) {
         return "\"" + text.replace("\"", "\\\"").replace("\n", "\\n") + "\"";
     }
