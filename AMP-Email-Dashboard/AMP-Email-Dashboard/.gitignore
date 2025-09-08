@@ -1,35 +1,22 @@
-HELP.md
-target/
-.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+/AMP-Email-Dashboard/AMP-Email-Dashboard/src/main/resources/application.properties
+AMP-Email-Dashboard/src/main/resources/application.properties
+AMP-Email-Dashboard/target/classes/application.properties
 
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# JetBrains IDE
+.idea/
 *.iml
-*.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Build
+dist/
+out/
+target/
 
-### VS Code ###
-.idea/AMP-Email-Dashboard/
-src/main/resources/application.properties
-src/main/resources/application.yml
+# Environment files
+.env
