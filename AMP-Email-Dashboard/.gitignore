@@ -1,65 +1,22 @@
+/AMP-Email-Dashboard/AMP-Email-Dashboard/src/main/resources/application.properties
+AMP-Email-Dashboard/src/main/resources/application.properties
+AMP-Email-Dashboard/target/classes/application.properties
 
-# OS / System files
-.DS_Store
-Thumbs.db
-# Logs
-*.log
-logs/
-# Environment files
-.env
-.env.*
-!*.example        # keep example env files
-# IDE files (IntelliJ / VSCode / Eclipse)
-.idea/
-*.iml
-*.ipr
-*.iws
-.vscode/
-*.classpath
-*.project
-.settings/
-# Java / Spring Boot (backend)
-/target/
-/build/
-/out/
-/*.class
-# Ignore packaged archives
-*.jar
-*.war
-*.ear
-# Spring Boot config (keep secrets safe)
-.idea/AMP-Email-Dashboard/src/main/resources/application.properties
-.idea/AMP-Email-Dashboard/src/main/resources/application.yml
-# Node / React (frontend)
+
+# Node
 node_modules/
-/build/
-/dist/
-# React env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-# Misc
-*.swp
-# Logs
-logs
-*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
-node_modules
-dist
-dist-ssr
-*.local
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+
+# JetBrains IDE
+.idea/
+*.iml
+
+# Build
+dist/
+out/
+target/
+
+# Environment files
+.env
