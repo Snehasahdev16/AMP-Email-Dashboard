@@ -1,20 +1,31 @@
 package com.AMP_Dashboard.AMP_Email_Dashboard.controller;
 
-
+/**
+ * Data Transfer Object for the incoming request.
+ * It now cleanly accepts both html and idea, which can be blank.
+ */
 public class GenerateRequest {
     private String html;
     private String idea;
-    private String formIdea; // <-- ADDED THIS FIELD
 
     // Getters
-    public String getHtml() { return html; }
-    public String getIdea() { return idea; }
-    public String getFormIdea() { return formIdea; } // <-- ADDED THIS GETTER
+    public String getHtml() {
+        return html;
+    }
+
+    public String getIdea() {
+        return idea;
+    }
 
     // Setters
-    public void setHtml(String html) { this.html = html; }
-    public void setIdea(String idea) { this.idea = idea; }
-    public void setFormIdea(String formIdea) { this.formIdea = formIdea; } // <-- ADDED THIS SETTER
+    public void setHtml(String html) {
+        this.html = html;
+    }
+
+    public void setIdea(String idea) {
+        this.idea = idea;
+    }
 }
+
 
 

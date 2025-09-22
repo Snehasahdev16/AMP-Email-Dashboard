@@ -53,169 +53,103 @@ public class AmpService {
 
     public String convertFromHtml(String htmlInput) {
         String prompt =
-                "Convert the following HTML into valid AMP4EMAIL. Return ONLY AMP4EMAIL code no extra fences or any questions :" +
-                        "no !important, no external fonts, no animations" +
-                        "Use the below attached boilerplate as starting point\n" +
-                        "\n" +
-                        "Remove any text (Twig) outside the <body> tag and copy it just below the<body>\n" +
-                        "\n" +
-                        "Replace “mso-table-lspace: 0pt; mso-table-rspace: 0pt;“ with empty string.\n" +
-                        "\n" +
-                        "Replace “<img“ with “<amp-img height=10“. This might introduce a duplicate height attribute error. All the height attributes should be checked via inspection of normal HTML after it renders in browser.\n" +
-                        "\n" +
-                        "Remove the style attributes that are throwing error in AMP Playground. Some of them are:\n" +
-                        "\n" +
-                        "    -moz-border-radius\n" +
-                        "\n" +
-                        "    -webkit-border-radius\n" +
-                        "\n" +
-                        "AMP only allows links with HTTPS protocol, make sure that all the placeholders or constant links evaluate to such. At last, we can ignore the errors which are due to placeholders where there is supposed to be a HTTPS link.\n" +
-                        "\n" +
-                        "Change ubaOpenRateTrackingUrl to ubaOpenRateTrackingUrlAmp , This <amp-img> should be of width and height 1px, instead of 0 as in HTML, this will affect the Open Tracking of AMP email. AMP requires both height and width as attribute so that the size of the image can be known beofre even rendering the image, is the width, height is 0 for image, it was observered that the Open Tracking Pixel was not triggered.\n" +
-                        "\n" +
-                        "If yours is use case involving forms, do checkout the sample code for all kinds of forms: \n" +
-                        "\n" +
-                        "AMP Playground \n" +
-                        "\n" +
-                        "We can use AMP state to store the status of form submission as follows, add this in<form> tag if you want to show different banners after success-submission and error-submission. These variables can be used to hide or show any element like: <td>, <div> etc.\n" +
-                        "on=\"submit-success:AMP.setState({ form_response : event.response, form_success : 'show', form_submitted : 'show'});submit-error:AMP.setState({form_submitted : 'show', form_error: 'show'})\">\n" +
-                        "\n" +
-                        "    These states can be used to compute class attribute of an element: For eg: If the form is submitted with success, then form_success would have been set to show above and will display the below thanks element.\n" +
-                        "\n" +
-                        "<tr id=\"thanks\" class=\"hide\" [class]=\"form_success ? 'show' : 'hide'\">\n" +
-                        "\n" +
-                        "Same goes for error element:\n" +
-                        "\n" +
-                        "        <tr id=\"error\" class=\"hide\" [class]=\"form_error ? 'show' : 'hide'\">\n" +
-                        "\n" +
-                        "Boilerplate AMP Code:\n" +
-                        "<!doctype html>\n" +
-                        "<html amp4email lang=\"en\" data-css-strict>\n" +
-                        "\n" +
-                        "<head>\n" +
-                        "   <meta charset=\"utf-8\">\n" +
-                        "   <style amp4email-boilerplate>\n" +
-                        "      body {\n" +
-                        "         visibility: hidden\n" +
-                        "      }\n" +
-                        "   </style>\n" +
-                        "   <script async src=\"https://cdn.ampproject.org/v0.js\"></script>\n" +
-                        "   <script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>\n" +
-                        "   <script async custom-element=\"amp-bind\" src=\"https://cdn.ampproject.org/v0/amp-bind-0.1.js\"></script>\n" +
-                        "\n" +
-                        "   <style amp-custom>\n" +
-                        "      form.amp-form-submit-success>input {\n" +
-                        "         display: none\n" +
-                        "      }\n" +
-                        "\n" +
-                        "      .show {}\n" +
-                        "\n" +
-                        "      .hide {\n" +
-                        "         display: none;\n" +
-                        "      }\n" +
-                        "   </style>\n" +
-                        "</head>\n" +
-                        "<body>\n" +
-                        "</body>\n" +
-                        "</html>" +
-                        "\n" +
-                        htmlInput;
+                    "Convert the following HTML into valid AMP4EMAIL. " +
+                            "Return ONLY AMP4EMAIL code, no extra fences or explanations.The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input " +
+
+                            "=== Global Rules === " +
+                            "Always include <style amp4email-boilerplate>. " +
+                            "No !important, no external fonts, no animations. " +
+                            "AMP links must use HTTPS (placeholders that evaluate to HTTPS are acceptable). " +
+                            "If the HTML uses interactive frameworks (e.g. amp-bind), refactor imperative event handlers into declarative AMP.setState logic. " +
+                            "Minimize repetition: consolidate CSS rules and streamline HTML without losing clarity. " +
+
+                            "=== HTML Transformations === " +
+                            "Remove any text outside <body> and move it inside. " +
+                            "Replace 'mso-table-lspace:0pt; mso-table-rspace:0pt;' with empty string. " +
+                            "Replace every <img with <amp-img height=\"10\" and ensure width+height attributes are present. " +
+                            "Change ubaOpenRateTrackingUrl → ubaOpenRateTrackingUrlAmp and ensure tracking <amp-img width=1 height=1>. " +
+                            "Remove unsupported CSS attributes (-moz-border-radius, -webkit-border-radius, etc). " +
+                            "All links must be HTTPS. " +
+
+                            "=== Forms (ONLY if input HTML already has a form) === " +
+                            "If the HTML contains a form, then convert it to <form method=\"post\" action-xhr=\"https://...\"> with amp-form. " +
+                            "Add AMP.setState bindings for submit-success and submit-error. " +
+
+                            "=== Boilerplate to Always Use === " +
+                            "<!doctype html><html amp4email lang=\"en\" data-css-strict><head>" +
+                            "<meta charset=\"utf-8\">" +
+                            "<style amp4email-boilerplate>body{visibility:hidden}</style>" +
+                            "<script async src=\"https://cdn.ampproject.org/v0.js\"></script>" +
+                            "<script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>" +
+                            "<script async custom-element=\"amp-bind\" src=\"https://cdn.ampproject.org/v0/amp-bind-0.1.js\"></script>" +
+                            "<style amp-custom>.show{} .hide{display:none}</style>" +
+                            htmlInput;
         return callGemini(prompt);
     }
 
     public String convertFromIdea(String idea) {
         String prompt =
                 "Generate a complete AMP4EMAIL HTML email from this idea: \"" + idea + "\". " +
-                        "Start with <!doctype html> and <html ⚡4email>. Follow all AMP4EMAIL rules.Return ONLY AMP4EMAIL code no extra fences or any questions : +\n" +
-                        "no !important, no external fonts, no animations" +
-                        "Use the below attached boilerplate as starting point\n" +
-                        "\n" +
-                        "Remove any text (Twig) outside the <body> tag and copy it just below the<body>\n" +
-                        "\n" +
-                        "Replace “mso-table-lspace: 0pt; mso-table-rspace: 0pt;“ with empty string.\n" +
-                        "\n" +
-                        "Replace “<img“ with “<amp-img height=10“. This might introduce a duplicate height attribute error. All the height attributes should be checked via inspection of normal HTML after it renders in browser.\n" +
-                        "\n" +
-                        "Remove the style attributes that are throwing error in AMP Playground. Some of them are:\n" +
-                        "\n" +
-                        "    -moz-border-radius\n" +
-                        "\n" +
-                        "    -webkit-border-radius\n" +
-                        "\n" +
-                        "AMP only allows links with HTTPS protocol, make sure that all the placeholders or constant links evaluate to such. At last, we can ignore the errors which are due to placeholders where there is supposed to be a HTTPS link.\n" +
-                        "\n" +
-                        "Change ubaOpenRateTrackingUrl to ubaOpenRateTrackingUrlAmp , This <amp-img> should be of width and height 1px, instead of 0 as in HTML, this will affect the Open Tracking of AMP email. AMP requires both height and width as attribute so that the size of the image can be known beofre even rendering the image, is the width, height is 0 for image, it was observered that the Open Tracking Pixel was not triggered.\n" +
-                        "\n" +
-                        "If yours is use case involving forms, do checkout the sample code for all kinds of forms: \n" +
-                        "\n" +
-                        "AMP Playground \n" +
-                        "\n" +
-                        "We can use AMP state to store the status of form submission as follows, add this in<form> tag if you want to show different banners after success-submission and error-submission. These variables can be used to hide or show any element like: <td>, <div> etc.\n" +
-                        "on=\"submit-success:AMP.setState({ form_response : event.response, form_success : 'show', form_submitted : 'show'});submit-error:AMP.setState({form_submitted : 'show', form_error: 'show'})\">\n" +
-                        "\n" +
-                        "    These states can be used to compute class attribute of an element: For eg: If the form is submitted with success, then form_success would have been set to show above and will display the below thanks element.\n" +
-                        "\n" +
-                        "<tr id=\"thanks\" class=\"hide\" [class]=\"form_success ? 'show' : 'hide'\">\n" +
-                        "\n" +
-                        "Same goes for error element:\n" +
-                        "\n" +
-                        "        <tr id=\"error\" class=\"hide\" [class]=\"form_error ? 'show' : 'hide'\">\n" +
-                        "\n" +
-                        "Boilerplate AMP Code:\n" +
-                        "<!doctype html>\n" +
-                        "<html amp4email lang=\"en\" data-css-strict>\n" +
-                        "\n" +
-                        "<head>\n" +
-                        "   <meta charset=\"utf-8\">\n" +
-                        "   <style amp4email-boilerplate>\n" +
-                        "      body {\n" +
-                        "         visibility: hidden\n" +
-                        "      }\n" +
-                        "   </style>\n" +
-                        "   <script async src=\"https://cdn.ampproject.org/v0.js\"></script>\n" +
-                        "   <script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>\n" +
-                        "   <script async custom-element=\"amp-bind\" src=\"https://cdn.ampproject.org/v0/amp-bind-0.1.js\"></script>\n" +
-                        "\n" +
-                        "   <style amp-custom>\n" +
-                        "      form.amp-form-submit-success>input {\n" +
-                        "         display: none\n" +
-                        "      }\n" +
-                        "\n" +
-                        "      .show {}\n" +
-                        "\n" +
-                        "      .hide {\n" +
-                        "         display: none;\n" +
-                        "      }\n" +
-                        "   </style>\n" +
-                        "</head>\n" +
-                        "<body>\n" +
-                        "</body>\n" +
-                        "</html>";
+                        "Return ONLY AMP4EMAIL code, no extra fences or explanations.The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input " +
+
+                        "=== Global Rules === " +
+                        "Always include <style amp4email-boilerplate>. " +
+                        "No !important, no external fonts, no animations. " +
+                        "AMP links must use HTTPS (placeholders that evaluate to HTTPS are acceptable). " +
+                        "If interactive logic is needed, use amp-bind declaratively (not imperative onClick). " +
+                        "Minimize repetition: consolidate CSS. " +
+
+                        "=== Forms (ONLY if idea explicitly mentions a form) === " +
+                        "If the idea requires a form (e.g., signup, feedback), use <form method=\"post\" action-xhr=\"https://...\"> with amp-form. " +
+                        "Add AMP.setState for submit-success and submit-error. " +
+
+                        "=== Boilerplate to Always Use === " +
+                        "<!doctype html><html amp4email lang=\"en\" data-css-strict><head>" +
+                        "<meta charset=\"utf-8\">" +
+                        "<style amp4email-boilerplate>body{visibility:hidden}</style>" +
+                        "<script async src=\"https://cdn.ampproject.org/v0.js\"></script>" +
+                        "<script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>" +
+                        "<script async custom-element=\"amp-bind\" src=\"https://cdn.ampproject.org/v0/amp-bind-0.1.js\"></script>" +
+                        "<style amp-custom>.show{} .hide{display:none}</style>" +
+                        "</head><body></body></html>";
         return callGemini(prompt);
     }
-
-    public String convertIdeaToForm(String idea) {
+    public String convertFromHtmlAndIdea(String html, String idea) {
         String prompt =
-                "You’re an expert in AMP for Email. Based on the following idea, generate a valid AMP4EMAIL email FORM.\n\n" +
-                        "Idea:\n" + idea + "\n\n" +
-                        "Requirements:\n" +
-                        "1. Must start with <!doctype html> and <html amp4email lang=\"en\" data-css-strict>.\n" +
-                        "2. Include required AMP runtime script and amp-form script:\n" +
-                        "   <script async src=\"https://cdn.ampproject.org/v0.js\"></script>\n" +
-                        "   <script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>\n" +
-                        "3. The <form> must have method=\"post\", action-xhr=\"https://example.com/submit\", and target=\"_top\".\n" +
-                        "4. Only allow valid AMP input types: text, email, textarea, select, option, input type=submit.\n" +
-                        "   Disallowed: input type=button, image, file.\n" +
-                        "5. Add proper <label> for each input and use required where appropriate.\n" +
-                        "6. Include success and error handling:\n" +
-                        "   <div submit-success><template type=\"amp-mustache\">Success message</template></div>\n" +
-                        "   <div submit-error><template type=\"amp-mustache\">Error message</template></div>\n" +
-                        "7. Keep CSS within <style amp-custom>, no !important, no animations.\n" +
-                        "8. Return ONLY the valid AMP4EMAIL HTML code, no explanations or markdown fences.\n";
+                "Convert the following into valid AMP4EMAIL. " +
+                        "Inputs include some HTML and an idea description. " +
+                        "Return ONLY the final AMP4EMAIL code, no extra fences or explanations. The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input" +
 
+                        "=== Global Rules === " +
+                        "Always include <style amp4email-boilerplate>. " +
+                        "No !important, no external fonts, no animations. " +
+                        "AMP links must use HTTPS. " +
+                        "If interactive logic is needed, use amp-bind declaratively. " +
+                        "Consolidate CSS, avoid duplication. " +
+
+                        "=== HTML Transformations === " +
+                        "Clean and convert provided HTML according to AMP4EMAIL rules (amp-img, boilerplate, HTTPS links, no disallowed attributes). " +
+
+                        "=== Idea Application === " +
+                        "Enhance or restructure the HTML according to the idea provided. " +
+
+                        "=== Forms (ONLY if HTML or idea explicitly mentions a form) === " +
+                        "If a form exists in either HTML or idea, convert it properly with amp-form and AMP.setState. " +
+
+                        "=== Boilerplate to Always Use === " +
+                        "<!doctype html><html amp4email lang=\"en\" data-css-strict><head>" +
+                        "<meta charset=\"utf-8\">" +
+                        "<style amp4email-boilerplate>body{visibility:hidden}</style>" +
+                        "<script async src=\"https://cdn.ampproject.org/v0.js\"></script>" +
+                        "<script async custom-element=\"amp-form\" src=\"https://cdn.ampproject.org/v0/amp-form-0.1.js\"></script>" +
+                        "<script async custom-element=\"amp-bind\" src=\"https://cdn.ampproject.org/v0/amp-bind-0.1.js\"></script>" +
+                        "<style amp-custom>.show{} .hide{display:none}</style>" +
+                        "</head><body></body></html> " +
+
+                        "HTML Input: " + html + " " +
+                        "Idea: " + idea;
         return callGemini(prompt);
     }
-
 
     private String escapeJson(String text) {
         return "\"" + text.replace("\"", "\\\"").replace("\n", "\\n") + "\"";

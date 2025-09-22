@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import AmpDashboard from './AmpDashboard'; 
-
+import AmpDashboard from "./AmpDashboard";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
