@@ -56,15 +56,16 @@ public class AmpService {
                     "Convert the following HTML into valid AMP4EMAIL. " +
                             "Return ONLY AMP4EMAIL code, no extra fences or explanations.The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input " +
 
-                            "=== Global Rules === " +
+                            "=== Global Rules ===  Don't use 'amp-mustache' if not very very necessary" +
                             "Always include <style amp4email-boilerplate>. " +
-                            "No !important, no external fonts, no animations. " +
-                            "AMP links must use HTTPS (placeholders that evaluate to HTTPS are acceptable). " +
+                            "The attribute 'charset' in tag 'meta charset=utf-8' is set"+
+                            "No !important, no external fonts, no animations.  The attribute 'target' may not appear in tag 'form'.  The tag 'amp-pixel' is disallowed. " +
+                            "AMP links must use HTTPS (placeholders that evaluate to HTTPS are acceptable).  The attribute 'height' will not appear in tag 'table'. " +
                             "If the HTML uses interactive frameworks (e.g. amp-bind), refactor imperative event handlers into declarative AMP.setState logic. " +
                             "Minimize repetition: consolidate CSS rules and streamline HTML without losing clarity. " +
 
                             "=== HTML Transformations === " +
-                            "Remove any text outside <body> and move it inside. " +
+                            "Remove any text outside <body> and move it inside."  +
                             "Replace 'mso-table-lspace:0pt; mso-table-rspace:0pt;' with empty string. " +
                             "Replace every <img with <amp-img height=\"10\" and ensure width+height attributes are present. " +
                             "Change ubaOpenRateTrackingUrl → ubaOpenRateTrackingUrlAmp and ensure tracking <amp-img width=1 height=1>. " +
@@ -92,12 +93,13 @@ public class AmpService {
                 "Generate a complete AMP4EMAIL HTML email from this idea: \"" + idea + "\". " +
                         "Return ONLY AMP4EMAIL code, no extra fences or explanations.The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input " +
 
-                        "=== Global Rules === " +
+                        "=== Global Rules ===  Don't use 'amp-mustache' if not very very necessary" +
                         "Always include <style amp4email-boilerplate>. " +
-                        "No !important, no external fonts, no animations. " +
-                        "AMP links must use HTTPS (placeholders that evaluate to HTTPS are acceptable). " +
+                        "The attribute 'charset' in tag 'meta charset=utf-8' is set"+
+                        "No !important, no external fonts, no animations. The attribute 'target' may not appear in tag 'form'.   The tag 'amp-pixel' is disallowed. " +
+                        "AMP links must use HTTPS (placeholders that evaluate to HTTPS are acceptable). The attribute 'height' will not appear in tag 'table'." +
                         "If interactive logic is needed, use amp-bind declaratively (not imperative onClick). " +
-                        "Minimize repetition: consolidate CSS. " +
+                        "Minimize repetition: consolidate CSS. "  +
 
                         "=== Forms (ONLY if idea explicitly mentions a form) === " +
                         "If the idea requires a form (e.g., signup, feedback), use <form method=\"post\" action-xhr=\"https://...\"> with amp-form. " +
@@ -120,10 +122,11 @@ public class AmpService {
                         "Inputs include some HTML and an idea description. " +
                         "Return ONLY the final AMP4EMAIL code, no extra fences or explanations. The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input" +
 
-                        "=== Global Rules === " +
+                        "=== Global Rules === " +"Don't use 'amp-mustache' if not very very necessary" +
                         "Always include <style amp4email-boilerplate>. " +
-                        "No !important, no external fonts, no animations. " +
-                        "AMP links must use HTTPS. " +
+                        "The attribute 'charset' in tag 'meta charset=utf-8' is set"+
+                        "No !important, no external fonts, no animations.  The attribute 'target' may not appear in tag 'form'. The tag 'amp-pixel' is disallowed. " +
+                        "AMP links must use HTTPS. The attribute 'height' will not appear in tag 'table'." +
                         "If interactive logic is needed, use amp-bind declaratively. " +
                         "Consolidate CSS, avoid duplication. " +
 
