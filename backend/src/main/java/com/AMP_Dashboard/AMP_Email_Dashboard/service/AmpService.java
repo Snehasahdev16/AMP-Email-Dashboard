@@ -56,7 +56,13 @@ public class AmpService {
                     "Convert the following HTML into valid AMP4EMAIL. " +
                             "Return ONLY AMP4EMAIL code, no extra fences or explanations.The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input " +
 
-                            "=== Global Rules ===  Don't use 'amp-mustache' if not very very necessary" +
+                            "=== Global Rules ===" +
+                            "The attribute 'border' should not appear in tag 'amp-img'."+
+                            " The relative URL '{{ubaOpenRateTrackingUrl}}' for attribute 'src' in tag 'amp-img' is disallowed."+
+                            "Don't use 'amp-mustache' if not very very necessary" +
+                            " The tag 'template' requires including the 'amp-mustache' extension JavaScript" +
+                            " The attribute 'submit-success' should not appear in tag 'div'. "+
+                            " The attribute 'target' in tag 'a' should not be set to the invalid value '_top'."+
                             "Always include <style amp4email-boilerplate>. " +
                             "The attribute 'charset' in tag 'meta charset=utf-8' is set"+
                             "No !important, no external fonts, no animations.  The attribute 'target' may not appear in tag 'form'.  The tag 'amp-pixel' is disallowed. " +
@@ -68,12 +74,15 @@ public class AmpService {
                             "Remove any text outside <body> and move it inside."  +
                             "Replace 'mso-table-lspace:0pt; mso-table-rspace:0pt;' with empty string. " +
                             "Replace every <img with <amp-img height=\"10\" and ensure width+height attributes are present. " +
-                            "Change ubaOpenRateTrackingUrl → ubaOpenRateTrackingUrlAmp and ensure tracking <amp-img width=1 height=1>. " +
+                            "remove ubaOpenRateTrackingUrl " +
                             "Remove unsupported CSS attributes (-moz-border-radius, -webkit-border-radius, etc). " +
                             "All links must be HTTPS. " +
 
                             "=== Forms (ONLY if input HTML already has a form) === " +
                             "If the HTML contains a form, then convert it to <form method=\"post\" action-xhr=\"https://...\"> with amp-form. " +
+                            "Only print  'Thank you for your feedback!' and 'Something went wrong. Please try again.' only after the user clicks on 'submit' not before that."+
+                            "The attribute 'hide-submit-success' should not appear in tag 'form'." +
+                            " The attribute 'submit-success' should not appear in tag 'div'. "+
                             "Add AMP.setState bindings for submit-success and submit-error. " +
 
                             "=== Boilerplate to Always Use === " +
@@ -93,7 +102,12 @@ public class AmpService {
                 "Generate a complete AMP4EMAIL HTML email from this idea: \"" + idea + "\". " +
                         "Return ONLY AMP4EMAIL code, no extra fences or explanations.The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input " +
 
-                        "=== Global Rules ===  Don't use 'amp-mustache' if not very very necessary" +
+                        "=== Global Rules ===  " +
+                        "The attribute 'border' should not appear in tag 'amp-img'."+
+                        "\" The relative URL '{{ubaOpenRateTrackingUrl}}' for attribute 'src' in tag 'amp-img' is disallowed.\"+Don't use 'amp-mustache' if not very very necessary" +
+                        " The tag 'template' requires including the 'amp-mustache' extension JavaScript" +
+                        " The attribute 'submit-success' should not appear in tag 'div'. "+
+                        " The attribute 'target' in tag 'a' should not be set to the invalid value '_top'."+
                         "Always include <style amp4email-boilerplate>. " +
                         "The attribute 'charset' in tag 'meta charset=utf-8' is set"+
                         "No !important, no external fonts, no animations. The attribute 'target' may not appear in tag 'form'.   The tag 'amp-pixel' is disallowed. " +
@@ -103,6 +117,9 @@ public class AmpService {
 
                         "=== Forms (ONLY if idea explicitly mentions a form) === " +
                         "If the idea requires a form (e.g., signup, feedback), use <form method=\"post\" action-xhr=\"https://...\"> with amp-form. " +
+                        "Only print  'Thank you for your feedback!' and 'Something went wrong. Please try again.' only after the user clicks on 'submit' not before that."+
+                        "The attribute 'hide-submit-success' should not appear in tag 'form'." +
+                        " The attribute 'submit-success' should not appear in tag 'div'. "+
                         "Add AMP.setState for submit-success and submit-error. " +
 
                         "=== Boilerplate to Always Use === " +
@@ -122,7 +139,13 @@ public class AmpService {
                         "Inputs include some HTML and an idea description. " +
                         "Return ONLY the final AMP4EMAIL code, no extra fences or explanations. The generated code should be Optimized and should athere to the below mentioned rules and work according to the user's input" +
 
-                        "=== Global Rules === " +"Don't use 'amp-mustache' if not very very necessary" +
+                        "=== Global Rules === " + "Don't use 'amp-mustache' if not very very necessary" +
+                        " The tag 'template' requires including the 'amp-mustache' extension JavaScript"
+        +"'style amp-custom' - should not have invalid property 'mso-table-rspace'"+
+                        "The attribute 'border' should not appear in tag 'amp-img'."+
+                        " The relative URL '{{ubaOpenRateTrackingUrl}}' for attribute 'src' in tag 'amp-img' is disallowed."+
+                        " The attribute 'submit-success' should not appear in tag 'div'. "+
+                        " The attribute 'target' in tag 'a' should not be set to the invalid value '_top'."+
                         "Always include <style amp4email-boilerplate>. " +
                         "The attribute 'charset' in tag 'meta charset=utf-8' is set"+
                         "No !important, no external fonts, no animations.  The attribute 'target' may not appear in tag 'form'. The tag 'amp-pixel' is disallowed. " +
@@ -138,6 +161,9 @@ public class AmpService {
 
                         "=== Forms (ONLY if HTML or idea explicitly mentions a form) === " +
                         "If a form exists in either HTML or idea, convert it properly with amp-form and AMP.setState. " +
+                        "The attribute 'hide-submit-success' should not appear in tag 'form'." +
+                        "Only print  'Thank you for your feedback!' and 'Something went wrong. Please try again.' only after the user clicks on 'submit' not before that."+
+                        " The attribute 'submit-success' should not appear in tag 'div'. "+
 
                         "=== Boilerplate to Always Use === " +
                         "<!doctype html><html amp4email lang=\"en\" data-css-strict><head>" +
